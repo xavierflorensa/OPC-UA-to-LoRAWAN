@@ -1,0 +1,119 @@
+[
+    {
+        "id": "da61382aa2dce2af",
+        "type": "OpcUa-Item",
+        "z": "6054c8a452f7bc4a",
+        "item": "ns=2;s=Channel1.Device1.IoT_data",
+        "datatype": "Int16",
+        "value": "",
+        "name": "",
+        "x": 300,
+        "y": 40,
+        "wires": [
+            [
+                "ae8feed74b0fa980"
+            ]
+        ]
+    },
+    {
+        "id": "2a7ae71b53b95ad3",
+        "type": "inject",
+        "z": "6054c8a452f7bc4a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 40,
+        "wires": [
+            [
+                "da61382aa2dce2af"
+            ]
+        ]
+    },
+    {
+        "id": "84b089575f3c30ca",
+        "type": "debug",
+        "z": "6054c8a452f7bc4a",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ae8feed74b0fa980",
+        "type": "OpcUa-Client",
+        "z": "6054c8a452f7bc4a",
+        "endpoint": "e52fa529a472915a",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "84b089575f3c30ca",
+                "f6b4ca603009263f"
+            ]
+        ]
+    },
+    {
+        "id": "f6b4ca603009263f",
+        "type": "file",
+        "z": "6054c8a452f7bc4a",
+        "name": "",
+        "filename": "/home/pi/raspi-lmic/examples/ttn-otaa/missatge.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e52fa529a472915a",
+        "type": "OpcUa-Endpoint",
+        "z": "6054c8a452f7bc4a",
+        "endpoint": "opc.tcp://192.168.1.130:49370",
+        "secpol": "Basic256Sha256",
+        "secmode": "SignAndEncrypt",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    }
+]
